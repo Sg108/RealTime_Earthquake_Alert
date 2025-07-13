@@ -8,7 +8,7 @@ kafka_options = {
     "kafka.bootstrap.servers": "pkc-xrnwx.asia-south2.gcp.confluent.cloud:9092",
     "kafka.sasl.mechanism": "PLAIN",
     "kafka.security.protocol": "SASL_SSL",
-    "kafka.sasl.jaas.config": "org.apache.kafka.common.security.plain.PlainLoginModule required username='QFGHKY45NF7AMHYM' password='DE4UK/DTVEiH+QL2xigESrIHTJcX5l4v8EHHbDEZPbBlUC0DKkXIN1iGXeqrWLJQ';",
+    "kafka.sasl.jaas.config": "org.apache.kafka.common.security.plain.PlainLoginModule required username='username' password='password';",
     "subscribe": "Earthquakes",
     "startingOffsets": "earliest" 
 }
