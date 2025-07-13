@@ -2,64 +2,12 @@
 
 **A near real-time data pipeline that ingests earthquake data from the USGS, processes it using Kafka and Microsoft Fabric, and provides BI reports and critical magnitude alerts.**
 
-## **📋 Table of Contents**
-
-* [Overview](https://www.google.com/search?q=%23-overview)  
-* [System Architecture](https://www.google.com/search?q=%23-system-architecture)  
-* [Data Flow](https://www.google.com/search?q=%23-data-flow)  
-* [Components](https://www.google.com/search?q=%23-components)  
-  * [1\. Data Source](https://www.google.com/search?q=%231-data-source)  
-  * [2\. Data Producer (AWS EC2)](https://www.google.com/search?q=%232-data-producer-aws-ec2)  
-  * [3\. Messaging Queue (Confluent Kafka)](https://www.google.com/search?q=%233-messaging-queue-confluent-kafka)  
-  * [4\. Consumer & Processor (Microsoft Fabric)](https://www.google.com/search?q=%234-consumer--processor-microsoft-fabric)  
-  * [5\. Reporting (Power BI)](https://www.google.com/search?q=%235-reporting-power-bi)  
-  * [6\. Alerting System](https://www.google.com/search?q=%236-alerting-system)  
-* [Setup & Deployment](https://www.google.com/search?q=%23-setup--deployment)  
-* [Future Enhancements](https://www.google.com/search?q=%23-future-enhancements)
-
 ## **🔭 Overview**
 
 This project implements an end-to-end data engineering solution to monitor global earthquake activity in near real-time. The pipeline is designed to be robust, scalable, and automated.
 
 Every five minutes, it fetches the latest earthquake data from the U.S. Geological Survey (USGS), streams it through a Kafka topic, processes it using a Spark job in Microsoft Fabric, and visualizes the results in a Power BI dashboard. A crucial feature of this system is its automated alerting mechanism, which sends an email notification for any seismic event with a magnitude greater than 6.0.
 
-## **🏗️ System Architecture**
-
-The architecture is designed to decouple data ingestion from data processing, ensuring resilience and scalability.
-
-graph TD  
-    subgraph "Data Source"  
-        A\[USGS Earthquake API\]  
-    end
-
-    subgraph "Producer on AWS"  
-        B(AWS EC2 Instance) \-- Fetches data every 5 mins \--\> A  
-        B \-- Runs Python Producer Script \--\> C\[Confluent Kafka\]  
-    end
-
-    subgraph "Messaging Queue"  
-        C \-- Topic: 'Earthquakes' \--\> D  
-    end
-
-    subgraph "Processing & Analytics in Microsoft Fabric"  
-        D(Spark Job Definition) \-- Consumes from Kafka every 5 mins \--\> C  
-        D \-- Processes & Cleans Data \--\> E\[Lakehouse Table\]  
-        E \-- Powers \--\> F\[Power BI Report\]  
-        D \-- Checks magnitude \> 6 \--\> G{Alerting Logic}  
-    end
-
-    subgraph "Outputs"  
-        F  
-        G \-- Sends Email \--\> H\[\<i class='fa fa-envelope'\>\</i\> Email Alert\]  
-    end
-
-    style A fill:\#f9f,stroke:\#333,stroke-width:2px  
-    style B fill:\#FF9900,stroke:\#333,stroke-width:2px  
-    style C fill:\#231F20,stroke:\#fff,stroke-width:2px,color:\#fff  
-    style D fill:\#7FBA00,stroke:\#333,stroke-width:2px  
-    style E fill:\#01B8AA,stroke:\#333,stroke-width:2px  
-    style F fill:\#F2C811,stroke:\#333,stroke-width:2px  
-    style H fill:\#E83B3B,stroke:\#333,stroke-width:2px
 
 ## **🌊 Data Flow**
 
