@@ -138,9 +138,3 @@ graph TD
    * Build your report and publish it to the Fabric workspace.  
    * Configure scheduled refresh for the semantic model.
 
-## **🚀 Future Enhancements**
-
-* **Sentiment Analysis:** Incorporate social media data (e.g., from Twitter/X) to analyze public sentiment and reports following an earthquake.  
-* **Advanced Analytics:** Use machine learning to predict the likelihood of aftershocks in a specific region.  
-* **Alternative Alerts:** Expand the alerting system to include SMS (e.g., via Twilio) and push notifications to a mobile app.  
-* **Data Archiving:** Implement a data lifecycle policy to move older data from the hot Delta table to a cheaper, cold storage solution like Azure Blob Storage for long-term archival.
